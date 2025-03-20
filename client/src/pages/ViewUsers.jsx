@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import axios from "axios"
 const ViewUsers = () => {
   const location = useLocation();
+  const API_URL=import.meta.env.VITE_API_URL;
   const uname = location.state?.uname || "Guest";
     const navigate=useNavigate();
     const [users,setUsers]=useState([]);
@@ -13,7 +14,7 @@ const ViewUsers = () => {
         loadusers();
     },[])
     const loadusers=async()=>{
-     const resp=await axios.get("http://localhost:3001/users");
+     const resp=await axios.get(`${API_URL}/users`);
      setUsers(resp.data);
     }
     const handleEdit=async(email)=>{
@@ -21,7 +22,7 @@ const ViewUsers = () => {
       navigate(`/edituser/${email}`)
     }
     const handleDelete=async(email)=>{
-      await axios.delete(`http://localhost:3001/deleteuser/${email}`);
+      await axios.delete(`${API_URL}/${email}`);
       alert("user deleted successfully")
       loadusers();
     }

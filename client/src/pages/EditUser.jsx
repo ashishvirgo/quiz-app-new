@@ -7,11 +7,11 @@ const EditUser = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
+  const API_URL=import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/user/${email}`);
+        const response = await axios.get(`${API_URL}/${email}`);
         console.log(response.data.user.name);
         setName(response.data.user.name || ""); 
         setPassword(""); 
@@ -28,7 +28,7 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3001/edituser/${email}`, { name, password });
+      await axios.put(`${API_URL}/${email}`, { name, password });
       alert("User edited successfully");
       navigate("/viewuser");
     } catch (error) {

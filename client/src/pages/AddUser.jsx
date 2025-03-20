@@ -3,6 +3,7 @@ import axios from "axios"
 import "bootstrap/dist/css/bootstrap.css"
 import { useNavigate } from 'react-router-dom'
 const AddUser = () => {
+  const API_URL=import.meta.env.VITE_API_URL;
   const navigate=useNavigate();
   const handleAddUser=(e)=>{
      e.preventDefault();
@@ -13,7 +14,7 @@ const AddUser = () => {
       if(!name || !email || !password){
        return alert("All fields Required")
       }
-        axios.post("http://localhost:3001/createuser",{name,email,password})
+        axios.post(`${API_URL}/createuser`,{name,email,password})
         alert("user created successfully");
         navigate("/viewuser")
      }

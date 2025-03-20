@@ -8,7 +8,6 @@ const bcrypt = require("bcrypt");
 const app=express();
 const port=process.env.PORT;
 DBConnect();
-const users=[];
 app.use(cors())
 app.use(express.json())
 app.get("/users",async(req,res)=>{
