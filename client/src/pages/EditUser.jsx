@@ -11,7 +11,7 @@ const EditUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`${API_URL}/${email}`);
+        const response = await axios.get(`${API_URL}/user/${email}`);
         console.log(response.data.user.name);
         setName(response.data.user.name || ""); 
         setPassword(""); 
