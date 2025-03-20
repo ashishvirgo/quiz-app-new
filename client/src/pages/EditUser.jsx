@@ -28,7 +28,7 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${API_URL}/${email}`, { name, password });
+      await axios.put(`${API_URL}/edituser/${email}`, { name, password });
       alert("User edited successfully");
       navigate("/viewuser");
     } catch (error) {
