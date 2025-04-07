@@ -22,7 +22,7 @@ const ViewUsers = () => {
       navigate(`/edituser/${email}`)
     }
     const handleDelete=async(email)=>{
-      await axios.delete(`${API_URL}/${email}`);
+      await axios.delete(`${API_URL}/deleteuser/${email}`);
       alert("user deleted successfully")
       loadusers();
     }
